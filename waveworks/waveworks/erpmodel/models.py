@@ -83,6 +83,8 @@ class AuthUserUserPermissions(models.Model):
 class Brand(models.Model):
     name = models.CharField(primary_key=True, max_length=45)
     description = models.CharField(max_length=45, blank=True)
+    def __unicode__(self):             
+        return self.name
 
     class Meta:
         managed = False
@@ -139,6 +141,8 @@ class DjangoSession(models.Model):
 class MarketSegment(models.Model):
     name = models.CharField(primary_key=True, max_length=45)
     description = models.CharField(max_length=45, blank=True)
+    def __unicode__(self):             
+        return self.name
 
     class Meta:
         managed = False
@@ -148,6 +152,8 @@ class MarketSegment(models.Model):
 class Model(models.Model):
     name = models.CharField(primary_key=True, max_length=45)
     description = models.CharField(max_length=45, blank=True)
+    def __unicode__(self):             
+        return self.name
 
     class Meta:
         managed = False
@@ -161,6 +167,8 @@ class Product(models.Model):
     model_name = models.ForeignKey(Model, db_column='model_name')
     name = models.CharField(primary_key=True, max_length=45)
     sku = models.CharField(unique=True, max_length=45, blank=True)
+    def __unicode__(self):             
+        return self.name
 
     class Meta:
         managed = False
@@ -170,6 +178,8 @@ class Product(models.Model):
 class ProductFamily(models.Model):
     name = models.CharField(primary_key=True, max_length=45)
     description = models.CharField(max_length=45, blank=True)
+    def __unicode__(self):             
+        return self.name
 
     class Meta:
         managed = False
@@ -179,6 +189,8 @@ class ProductFamily(models.Model):
 class ProductFamilyAttributes(models.Model):
     attribute = models.CharField(primary_key=True, max_length=45)
     product_family_name = models.ForeignKey(ProductFamily, db_column='product_family_name')
+    def __unicode__(self):             
+        return self.attribute
 
     class Meta:
         managed = False
@@ -190,6 +202,8 @@ class ProductInfo(models.Model):
     product_family_attributes_attribute = models.ForeignKey(ProductFamilyAttributes, db_column='product_family_attributes_attribute')
     product_family_attribute_value = models.CharField(max_length=45, blank=True)
     product_name = models.ForeignKey(Product, db_column='product_name')
+    def __unicode__(self):             
+        return self.product_name
 
     class Meta:
         managed = False
